@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-
+ 
 public class Main {
     
     static int[][] board;
@@ -8,8 +8,8 @@ public class Main {
     static int[] dx = {1, -1, 0, 0};
     static int[] dy = {0, 0, 1, -1};
     static int answer = 0;
-    static int n;
-    static int m;
+    static int n = 0;
+    static int m = 0;
     
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,71 +32,78 @@ public class Main {
         System.out.println(answer);
     }
     
-    static void dfs(int depth) {
-        if(depth == 3) {
-            spreadVirus();
+    static void dfs(int dpt) {
+        if(dpt == 3) {
+            a();
             return;
         }
         
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
                 if(board[i][j] == 0) {
+                    //visited[i][j] = true;
+                    //wall[dpt][0] = i;
+                    //wall[dpt][1] = j;
                     board[i][j] = 1;
-                    dfs(depth + 1);
+                    dfs(dpt + 1);
                     board[i][j] = 0;
                 }
             }
         }
     }
     
-    static void spreadVirus() {
-        // 깊은 복사
+    static void a() {
         copy = new int[n][m];
+        
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
                 copy[i][j] = board[i][j];
             }
         }
         
-        Queue<int[]> q = new LinkedList<>();
+        bfs();
         
-        // 바이러스 위치 넣기
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                if(copy[i][j] == 2) {
-                    q.add(new int[]{i, j});
-                }
-            }
-        }
-        
-        // BFS
-        while(!q.isEmpty()) {
-            int[] cur = q.poll();
-            int x = cur[0];
-            int y = cur[1];
-            
-            for(int i = 0; i < 4; i++) {
-                int nx = x + dx[i];
-                int ny = y + dy[i];
-                
-                // 범위 체크
-                if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
-                
-                if(copy[nx][ny] == 0) {
-                    copy[nx][ny] = 2;
-                    q.add(new int[]{nx, ny});
-                }
-            }
-        }
-        
-        // 안전 영역 계산
         int cnt = 0;
+        
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < m; j++) {
-                if(copy[i][j] == 0) cnt++;
+                if(copy[i][j] == 0) {
+                    cnt++;
+                }
             }
         }
         
         answer = Math.max(answer, cnt);
+    }
+    
+    
+    static void bfs() {
+        Queue<int[]> q = new LinkedList<>();
+        
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                if(copy[i][j] == 2) {
+                    q.add(new int[] {i, j});
+                }
+            }
+        }
+        
+        while(!q.isEmpty()) {
+            int[] cur = q.poll();
+            int cx = cur[0];
+            int cy = cur[1];
+            
+            for(int i = 0; i < 4; i++) {
+                int nx = cx + dx[i];
+                int ny = cy + dy[i];
+                
+                if(nx >= n || ny >= m || nx < 0 || ny < 0) continue;
+                
+                if(copy[nx][ny] == 0) {
+                    if(copy[nx][ny] == 0) copy[nx][ny] = 2;
+                    q.add(new int[] {nx, ny});
+                } else continue;
+            }
+        }
     }
 }
