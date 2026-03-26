@@ -1,8 +1,10 @@
 import java.io.*;
+import java.util.*;
 
 public class Main{
     public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
         int n = Integer.parseInt(br.readLine());
         
         String pattern = br.readLine();
@@ -14,11 +16,9 @@ public class Main{
             
             if(file.length() >= patterns[0].length() + patterns[1].length() && file.startsWith(patterns[0]) && file.endsWith(patterns[1])) {
                 System.out.println("DA");
-            } else{
+            } else {
                 System.out.println("NE");
             }
-            
         }
-        
     }
 }
