@@ -17,25 +17,29 @@ class Main {
         
         Queue<int[]> q = new LinkedList<>();
         q.offer(new int[] {S, 0});
+        visited[S] = true;
         
         while(!q.isEmpty()) {
-            int[] now = q.poll();
-            int cur = now[0];
-            int dist = now[1];
+            int[] cur = q.poll();
+            int now = cur[0];
+            int cnt = cur[1];
             
-            if(cur == G) {
-                System.out.println(dist);
+            if (now == G) {
+                System.out.println(cnt);
                 return;
             }
             
-            if((cur + U) <= F && !visited[cur + U]) {
-                visited[cur + U] = true;
-                q.offer(new int[] {cur + U, dist + 1});
+            int nu = now + U;
+            int nd = now - D;
+            
+            if (nu <= F && !visited[nu]) {
+                q.offer(new int[] {nu, cnt + 1});
+                visited[nu] = true;
             }
             
-            if((cur - D) >= 1 && !visited[cur - D]) {
-                visited[cur - D] = true;
-                q.offer(new int[] {cur - D, dist + 1});
+            if (nd >= 1 && !visited[nd]) {
+                q.offer(new int[] {nd, cnt + 1});
+                visited[nd] = true;
             }
         }
         
