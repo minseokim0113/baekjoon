@@ -6,11 +6,11 @@ class Solution {
         int len = citations.length;
         int max = 0;
         
-        for(int i = 0; i < citations.length; i++) {
+        for(int i = 0; i < len; i++) {
             if(citations[i] >= len - i) {
                 if(max < len - i) {
                     max = len - i;
-                }    
+                }
             }
         }
         
