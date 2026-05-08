@@ -5,7 +5,7 @@ class Solution {
         
         List<Integer> answer = new ArrayList<>();
         
-        for (int i = 0; i < commands.length; i++) {
+        for(int i = 0; i < commands.length; i++) {
             int start = commands[i][0];
             int end = commands[i][1];
             int idx = commands[i][2];
