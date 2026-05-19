@@ -18,10 +18,7 @@ class Solution {
             }
             answer.add(cnt);
         }
-        int [] result = new int[answer.size()];
-        for(int i = 0; i < answer.size(); i++){
-            result[i] = answer.get(i);
-        }
-        return result;
+        
+        return answer.stream().mapToInt(i -> i).toArray();
     }
 }
