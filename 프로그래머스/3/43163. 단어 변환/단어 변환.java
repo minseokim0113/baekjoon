@@ -2,8 +2,8 @@ import java.util.*;
 
 class Solution {
     
-    static int cnt = Integer.MAX_VALUE;
     static boolean[] visited;
+    static int cnt = Integer.MAX_VALUE;
     
     public int solution(String begin, String target, String[] words) {
         
@@ -11,7 +11,9 @@ class Solution {
         
         dfs(begin, target, words, 0);
         
-        if(cnt == Integer.MAX_VALUE) return 0;
+        if (cnt == Integer.MAX_VALUE) {
+            return 0;
+        }
         
         return cnt;
     }
@@ -23,10 +25,10 @@ class Solution {
             return;
         }
         
-        for(int i = 0; i < words.length; i++) {
+        for (int i = 0; i < words.length; i++) {
             
-            if(oneGap(words[i], begin) && !visited[i]) {
-                
+            if (oneGap(begin, words[i]) && !visited[i]) {
+                System.out.println(words[i]);
                 visited[i] = true;
                 dfs(words[i], target, words, dept + 1);
                 visited[i] = false;
@@ -40,8 +42,7 @@ class Solution {
         
         int num = 0;
         
-        for(int i = 0; i < w.length(); i++) {
-            
+        for(int i = 0; i < begin.length(); i++) {
             if (w.charAt(i) != begin.charAt(i)) {
                 num++;
             }
