@@ -1,64 +1,65 @@
 import java.util.*;
 
 class Solution {
-
     public int solution(int n, int[][] results) {
-
-        List<Integer>[] winGraph = new ArrayList[n + 1];
-        List<Integer>[] loseGraph = new ArrayList[n + 1];
-
+        
+        List<Integer>[] winGraph = new List[n + 1];
+        List<Integer>[] loseGraph = new List[n + 1];
+        
         for (int i = 1; i <= n; i++) {
             winGraph[i] = new ArrayList<>();
             loseGraph[i] = new ArrayList<>();
         }
-
-        for (int[] result : results) {
-            int winner = result[0];
-            int loser = result[1];
-
+        
+        for (int[] r : results) {
+            int winner = r[0];
+            int loser = r[1];
+            
             winGraph[winner].add(loser);
             loseGraph[loser].add(winner);
         }
-
+        
         int answer = 0;
-
-        for (int i = 1; i <= n; i++) {
-
-            int winCount = bfs(i, winGraph, n);
-            int loseCount = bfs(i, loseGraph, n);
-
-            if (winCount + loseCount == n - 1) {
+        
+        for (int i = 1; i < n + 1; i++) {
+            
+            int winCnt = bfs(i, winGraph);
+            int loseCnt = bfs(i, loseGraph);
+            
+            if (winCnt + loseCnt == n - 1) {
                 answer++;
             }
         }
-
+        
         return answer;
     }
-
-    private int bfs(int start, List<Integer>[] graph, int n) {
-
-        boolean[] visited = new boolean[n + 1];
+    
+    static int bfs(int start, List<Integer>[] graph) {
+        
+        boolean[] visited = new boolean[graph.length];
         Queue<Integer> q = new LinkedList<>();
-
+        
         q.offer(start);
         visited[start] = true;
-
-        int count = 0;
-
-        while (!q.isEmpty()) {
-
-            int cur = q.poll();
-
-            for (int next : graph[cur]) {
-
-                if (!visited[next]) {
-                    visited[next] = true;
-                    q.offer(next);
-                    count++;
+        
+        int cnt = 0;
+         
+        while(!q.isEmpty()) {
+            int player = q.poll();
+            
+            for (int a : graph[player]) {
+                if (!visited[a]) {
+                    cnt++;
+                    visited[a] = true;
+                    q.offer(a);
                 }
             }
         }
-
-        return count;
+        
+        return cnt;
     }
 }
+
+/**
+한명 기중 -> 진 횟수 + 이긴 횟수 = n - 1 순위 확정
+**/
