@@ -23,7 +23,7 @@ class Solution {
             }
             
             for (int j = 0; j < n; j++) {
-                if ((a1.charAt(j) - '0') == 1|| (a2.charAt(j) - '0') == 1) {
+                if ((a1.charAt(j) - '0') == 1 || (a2.charAt(j) - '0') == 1) {
                     answer[i][j] = "#";
                 } else {
                     answer[i][j] = " ";
