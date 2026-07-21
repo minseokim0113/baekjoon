@@ -9,10 +9,10 @@ class Solution {
             num.add(nums[i]);
         }
         
-        int m = nums.length / 2;
+        int mu = nums.length / 2;
         
-        if (num.size() >= m) {
-            return m;
+        if (num.size() >= mu) {
+            return mu;
         } else {
             return num.size();
         }
