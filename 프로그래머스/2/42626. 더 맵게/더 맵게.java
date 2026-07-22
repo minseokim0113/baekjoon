@@ -3,22 +3,22 @@ import java.util.*;
 class Solution {
     public int solution(int[] scoville, int K) {
         
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> pque = new PriorityQueue<>();
         int cnt = 0;
         
         for(int i : scoville) {
-            pq.offer(i);    
+            pque.offer(i);    
         }
         
-        while(pq.size() >= 2 && pq.peek() < K) {
-            int m1 = pq.poll();
-            int m2 = pq.poll();
+        while(pque.size() >= 2 && pque.peek() < K) {
+            int m1 = pque.poll();
+            int m2 = pque.poll();
             
-            pq.offer(m1 + 2 * m2);
+            pque.offer(m1 + 2 * m2);
             cnt++;
         }
         
-        if(pq.peek() < K) return -1;
+        if(pque.peek() < K) return -1;
         
         return cnt;
     }
