@@ -5,11 +5,11 @@ class Solution {
         Arrays.sort(rocks);
         int answer = 0;
         
-        int start = 1;
-        int end = distance;
+        int s = 1;
+        int e = distance;
         
-        while(start <= end) {
-            int mid = (start + end) / 2;
+        while(s <= e) {
+            int mid = (s + e) / 2;
             int prev = 0;
             int cnt = 0;
             
@@ -27,9 +27,9 @@ class Solution {
             
             if(cnt <= n) {
                 answer = mid;
-                start = mid + 1;
+                s = mid + 1;
             } else {
-                end = mid - 1;
+                e = mid - 1;
             }
         }
         
