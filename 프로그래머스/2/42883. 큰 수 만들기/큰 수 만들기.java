@@ -5,17 +5,17 @@ class Solution {
 
         Stack<Character> stack = new Stack<>();
 
-        for (char c : number.toCharArray()) {
+        for (char ch : number.toCharArray()) {
 
             while (!stack.isEmpty()
                     && k > 0
-                    && stack.peek() < c) {
+                    && stack.peek() < ch) {
 
                 stack.pop();
                 k--;
             }
 
-            stack.push(c);
+            stack.push(ch);
         }
 
         while (k > 0) {
@@ -25,8 +25,8 @@ class Solution {
 
         StringBuilder sb = new StringBuilder();
 
-        for (char c : stack) {
-            sb.append(c);
+        for (char ch : stack) {
+            sb.append(ch);
         }
 
         return sb.toString();
