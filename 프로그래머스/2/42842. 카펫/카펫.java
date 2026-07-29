@@ -4,8 +4,8 @@ class Solution {
         
         for(int i = 1; i <= yellow; i++) {
             if(yellow % i == 0) {
-                int size = (i + 2) * ((yellow / i) + 2);
-                if(brown == size - yellow) {
+                int s = (i + 2) * ((yellow / i) + 2);
+                if(brown == s - yellow) {
                     answer[0] = yellow / i + 2;
                     answer[1] = i + 2;
                     break;
