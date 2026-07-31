@@ -4,7 +4,7 @@ class Solution {
     static boolean[][] visited;
     int cnt = 0;
     int[][] groupbd;
-    int groupId = 1;
+    int gId = 1;
     int[] dx = {0, 0, 1, -1};
     int[] dy = {1, -1, 0, 0};
     
@@ -23,9 +23,9 @@ class Solution {
                     
                     findOil(land, i, j);
                     
-                    group.put(groupId, cnt);
+                    group.put(gId, cnt);
                     
-                    groupId++;
+                    gId++;
                 }    
             }
         }
@@ -66,7 +66,7 @@ class Solution {
         
         visited[x][y] = true;
         cnt++;
-        groupbd[x][y] = groupId;
+        groupbd[x][y] = gId;
         
         for(int i = 0; i < 4; i++) {
             int nx = x + dx[i];
