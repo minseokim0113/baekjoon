@@ -4,8 +4,8 @@ class Solution {
         int[][] dp = new int[n + 1][m + 1];
         boolean[][] puddle = new boolean[n + 1][m + 1];
         
-        for (int[] p : puddles) {
-            puddle[p[1]][p[0]] = true;
+        for (int[] pd : puddles) {
+            puddle[pd[1]][pd[0]] = true;
         }
         
         dp[1][1] = 1;
