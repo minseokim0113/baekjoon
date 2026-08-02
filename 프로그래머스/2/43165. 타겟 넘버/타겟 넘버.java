@@ -1,12 +1,12 @@
 class Solution {
     
-    static int targ;
+    static int tg;
     static int[] nums;
     static int cnt = 0;
     public int solution(int[] numbers, int target) {
         
         nums = numbers.clone();
-        targ = target;
+        tg = target;
         
         int sum = 0;
         int dept = 0;
@@ -20,7 +20,7 @@ class Solution {
     static void dfs(int dept, int sum) {
         
         if (dept == nums.length) {
-            if (sum == targ) {
+            if (sum == tg) {
                 cnt++;
             }
             return;
