@@ -11,9 +11,9 @@ class Solution {
             loseGraph[i] = new ArrayList<>();
         }
         
-        for (int[] r : results) {
-            int winner = r[0];
-            int loser = r[1];
+        for (int[] re : results) {
+            int winner = re[0];
+            int loser = re[1];
             
             winGraph[winner].add(loser);
             loseGraph[loser].add(winner);
