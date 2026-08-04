@@ -7,7 +7,7 @@ class Solution {
         
         long start = 1;
         long end = (long)(times[times.length - 1]) * n;
-        long answer = 0;
+        long min = 0;
         
         while (start < end) {
             long mid = (start + end) / 2;
@@ -18,13 +18,13 @@ class Solution {
             }
             
             if (sum >= n) {
-                answer = mid;
+                min = mid;
                 end = mid;
             } else {
                 start = mid + 1;
             }
         }
         
-        return answer;
+        return min;
     }
 }
