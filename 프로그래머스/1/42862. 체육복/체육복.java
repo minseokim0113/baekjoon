@@ -4,7 +4,7 @@ class Solution {
     public int solution(int n, int[] lost, int[] reserve) {
         
         List<Integer> lo = new ArrayList<>();
-        for (int i : lost) lo.add(i);
+        for (int l : lost) lo.add(l);
         
         List<Integer> re = new ArrayList<>();
         for (int i : reserve) re.add(i);
