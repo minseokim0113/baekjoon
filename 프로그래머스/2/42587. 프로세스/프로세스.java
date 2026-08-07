@@ -6,8 +6,8 @@ class Solution {
         Queue<int[]> q = new LinkedList<>();
 
         // [인덱스, 우선순위]
-        for(int i = 0; i < priorities.length; i++) {
-            q.offer(new int[]{i, priorities[i]});
+        for(int a = 0; a < priorities.length; a++) {
+            q.offer(new int[]{a, priorities[a]});
         }
 
         int answer = 0;
