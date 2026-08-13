@@ -10,8 +10,8 @@ class Solution {
         
         int answer = 1;
         
-        for (List<String> list : clo.values()) {
-            int size = list.size();
+        for (List<String> l : clo.values()) {
+            int size = l.size();
             answer *= size + 1;
         }
         
