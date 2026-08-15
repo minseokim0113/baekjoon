@@ -13,7 +13,8 @@ class Solution {
                 }
             }
         }
+        int answer = max;
         
-        return max;
+        return answer;
     }
 }
