@@ -7,8 +7,8 @@ class Solution {
 
         Set<Integer>[] dp = new HashSet[9];
 
-        for (int i = 1; i <= 8; i++) {
-            dp[i] = new HashSet<>();
+        for (int j = 1; j <= 8; j++) {
+            dp[j] = new HashSet<>();
         }
 
         for (int i = 1; i <= 8; i++) {
