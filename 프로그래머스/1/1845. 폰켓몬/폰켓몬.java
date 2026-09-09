@@ -5,8 +5,8 @@ class Solution {
         
         HashSet<Integer> num = new HashSet<>();
         
-        for(int i = 0; i < nums.length; i++) {
-            num.add(nums[i]);
+        for(int j = 0; j < nums.length; j++) {
+            num.add(nums[j]);
         }
         
         int mu = nums.length / 2;
